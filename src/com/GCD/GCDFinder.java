@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class GCDFinder {
     // find the Greatest common divisor of two numbers
     // by using Efficient Algorithm
+    // input of two numbers a b
 
     private static int findGCD(int a, int b) {
         if(b==0){
