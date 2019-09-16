@@ -65,11 +65,6 @@ public class BigO {
     }
 
     public static void main(String[] args) {
-        LinkedList list=new LinkedList();
-//        int[] arr = selectionSort(new int[]{5, 7, 10, 9, 5, 8});
-//        for (int elment : arr) {
-//            System.out.println(elment);
-//        }
     }
 
 
