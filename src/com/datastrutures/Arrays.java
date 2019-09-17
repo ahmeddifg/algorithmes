@@ -7,10 +7,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
 public class Arrays {
+    //Access O(1)
+    //Search O(n)
+    //Insertion O(n)
+    //Deletion O(n)
+
+
+
+
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////Merg Two sorted arrays into one array///////////////////////////
     ////////////////O(a+b)/////////////////////////////////////////////////////////
@@ -64,7 +74,6 @@ public class Arrays {
     public static long[] moveZerosToEnd(long[] array) {
         int i = 0;
         int j = array.length - 1;
-//        long temp=0;
         while (i != j) {
             if (array[j] == 0) {
                 j--;
@@ -78,7 +87,24 @@ public class Arrays {
         }
         return array;
     }
-
+    /////////////////////////////////////////////////////////////////
+    ////// find if the array contains any duplicates.///////////////
+    //////Input: [1,2,3,1] : true ;  Input: [1,2,3,4]: false////////
+    public static boolean checkIfArrayHasDuplicate(long []array){
+        Map<Long,Integer> numbers=new HashMap<Long,Integer>();
+        int i=0;
+        while(i<array.length){
+            if(numbers.get(array[i])!=null)
+                return true;
+            else{
+                numbers.put(array[i],1);
+                i++;
+            }
+        }
+        return false;
+    }
+   ///////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////
     public static void main(String[] args) {
         FastScanner scanner = new FastScanner(System.in);
         System.out.println();
@@ -93,7 +119,8 @@ public class Arrays {
         System.out.println();
         java.util.Arrays.stream(array1).forEach(e -> System.out.print(e + "  "));
         System.out.println();
-        java.util.Arrays.stream((moveZerosToEnd(array1))).forEach(e -> System.out.print(e + "  "));
+        System.out.println(checkIfArrayHasDuplicate(array1));
+//        java.util.Arrays.stream((moveZerosToEnd(array1))).forEach(e -> System.out.print(e + "  "));
 //        System.out.println();
 //        System.out.println("Enter number of elements in first array2:");
 //        int array2Length = (int) scanner.nextInt();
