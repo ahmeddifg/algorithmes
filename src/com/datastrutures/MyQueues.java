@@ -6,14 +6,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class MyStack<T> {
+public class MyQueues<T> {
     private int size;
     private Node head = null;
     private Node tail = null;
     private Node peek = null;
 
-    public MyStack() {
-        this.size = 0;
+    public MyQueues() {
         this.head = null;
         this.tail = null;
         this.peek = null;
@@ -35,58 +34,51 @@ public class MyStack<T> {
             this.tail = head;
             this.peek = this.head;
         } else {
-
-            this.tail = head;
+            this.tail = this.head;
             while (this.tail.next != null)
                 this.tail = this.tail.next;
-
             this.tail.next = node;
-            this.peek = node;
         }
-        ++size;
-    }
-
-    public Node peek() {
-        if (peek != null) {
-            System.out.println("This is peek value: " + this.peek.data);
-        }
-        return peek;
+        size++;
     }
 
     public Node pop() {
-        Node temp = null;
-        if (size != 0) {
-            --size;
-        } else {
+        if (size == 0)
             return null;
-        }
-        if (size == 1) {
-            temp = this.head;
-            this.head = null;
-            this.tail = null;
-            this.peek = null;
-            return temp;
-        } else {
-            this.tail = head;
-            while (this.tail.next != this.peek) {
-                this.tail = this.tail.next;
-            }
-            System.out.println("This is the popped value of your stack: " + this.peek.data);
-            this.tail.next = null;
-            this.peek = this.tail;
-            return this.peek;
+        else {
+            this.head = this.head.next;
+            --size;
+            return this.head;
         }
     }
 
+    public Node peek() {
+        if (this.head != null)
+            System.out.println("Current peek value: " + this.head.data);
+        return this.head;
+    }
 
-    public void printStack() {
+    public void printQueues() {
         this.tail = head;
-        System.out.println("Here is you list of elements on your stack:");
-        while (tail != null) {
-            System.out.print(this.tail.data + " ");
+        while (this.tail != null) {
+            System.out.print(this.tail.data + "  ");
             this.tail = this.tail.next;
         }
         System.out.println();
+    }
+
+    public Node getAt(int index) {
+        int i = 0;
+        if (index < size && size > 0) {
+            this.tail = this.head;
+            while (i < size) {
+                if (i == index)
+                    return this.tail;
+                this.tail = this.tail.next;
+                ++i;
+            }
+        } else return null;
+        return null;
     }
 
     public int getSize() {
@@ -94,21 +86,23 @@ public class MyStack<T> {
     }
 
     public static void main(String[] agrs) {
-        MyStack myStack = new MyStack<Integer>();
+        MyQueues MyQueue = new MyQueues<Integer>();
         FastScanner scanner = new FastScanner(System.in);
-        System.out.println("Enter number of elements in The stack:");
+        System.out.println("Enter number of elements in The queue:");
 
-        int stackSize = (int) scanner.nextInt();
-        for (int i = 0; i < stackSize; i++) {
-            myStack.push(scanner.nextInt());
+        int queueSize = (int) scanner.nextInt();
+        for (int i = 0; i < queueSize; i++) {
+            MyQueue.push(scanner.nextInt());
         }
-        myStack.peek();
-        myStack.pop();
-        myStack.peek();
-        myStack.pop();
-        myStack.peek();
-        myStack.printStack();
-        System.out.println("Current Stack size: "+myStack.size);
+        MyQueue.printQueues();
+        MyQueue.peek();
+        MyQueue.pop();
+        MyQueue.peek();
+        MyQueue.pop();
+        MyQueue.peek();
+        MyQueue.printQueues();
+        System.out.println("Current queue size: " + MyQueue.size);
+        System.out.println("At 1 is "+MyQueue.getAt(1).data);
 
     }
 

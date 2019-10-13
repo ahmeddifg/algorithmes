@@ -32,7 +32,7 @@ public class HashTablesSample {
        return null;
    }
     public static void main(String[] args) {
-        Arrays.FastScanner scanner = new Arrays.FastScanner(System.in);
+        FastScanner scanner = new FastScanner(System.in);
         System.out.println();
         System.out.println("Enter number of elements in first array1:");
 
