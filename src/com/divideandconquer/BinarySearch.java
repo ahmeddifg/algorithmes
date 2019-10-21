@@ -54,7 +54,6 @@ public class BinarySearch {
             b[i] = scanner.nextInt();
         }
         for (int i = 0; i < m; i++) {
-            //replace with the call to binarySearch when implemented
             System.out.print(binarySearch(a, b[i]) + " ");
         }
     }
