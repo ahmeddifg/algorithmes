@@ -6,7 +6,7 @@ public class Change {
     //The goal in this problem is to find the minimum number of coins needed to change the input value
     // (an integer) into coins with denominations 1, 5, and 10.
 
-    public static int coinsArray[] = new int[]{1, 5, 10};
+    public static int coinsArray[] = new int[]{1, 2, 5};
 
     private static int getChange(int m) {
         //write your code here
